@@ -28,23 +28,22 @@ public class MainActivity extends AppCompatActivity {
         EditText guessTv = findViewById(R.id.guessNumber);
         TextView countTv = findViewById(R.id.guessCount);
         int guessNumber = Integer.parseInt(guessTv.getText().toString());
+        String message;
 
         if (guessNumber == randomNumber) {
-            Toast.makeText(this, "you Guessed it right", Toast.LENGTH_SHORT).show();
+            message ="you Guessed it right";
             countTv.setText(String.valueOf(noOfGuesses+1));
             noOfGuesses=0;
         } else {
             if (guessNumber > randomNumber) {
-                Toast.makeText(this, "Lower!!", Toast.LENGTH_SHORT).show();
+                message = "Lower!!";
             } else {
-                Toast.makeText(this, "Higher!!", Toast.LENGTH_SHORT).show();
+                message = "Higher!!";
             }
             noOfGuesses+=1;
             countTv.setText(String.valueOf(noOfGuesses));
         }
-
-
-
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
 
     }
 
