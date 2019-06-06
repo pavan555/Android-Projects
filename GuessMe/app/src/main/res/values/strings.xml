@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Guess Me</string>
+    <string name="guessText">I\'m thinking of a number between 1 and 100 !!!<i>\n hint : We can achieve it in Maximum 14 trails if it is greater u have to try google egg dropping puzzle</i></string>
+    <string name="hint">Guess me!!</string>
+    <string name="count">Number of Guesses</string>
+</resources>
