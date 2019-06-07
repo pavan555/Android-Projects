@@ -21,32 +21,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void isGuessCorrect(View view){
+    public void isGuessCorrect(View view) {
 
         Log.i("Random Number ", String.valueOf(randomNumber));
         EditText guessTv = findViewById(R.id.guessNumber);
         TextView countTv = findViewById(R.id.guessCount);
-        int guessNumber = Integer.parseInt(guessTv.getText().toString());
         String message;
 
-        if (guessNumber == randomNumber) {
-            message ="you got it! Try again !!";
-            countTv.setText(String.valueOf(noOfGuesses+1));
-            randomNumber = getRandomNumber(100);
-            noOfGuesses=0;
+        if (guessTv.getText().toString().isEmpty()) {
+            message ="Please enter Number";
         } else {
-            if (guessNumber > randomNumber) {
-                message = "Lower!!";
+            int guessNumber = Integer.parseInt(guessTv.getText().toString());
+            if (guessNumber == randomNumber) {
+                message = "you got it! Try again !!";
+                countTv.setText(String.valueOf(noOfGuesses + 1));
+                randomNumber = getRandomNumber(100);
+                noOfGuesses = 0;
             } else {
-                message = "Higher!!";
+                if (guessNumber > randomNumber) {
+                    message = "Lower!!";
+                } else {
+                    message = "Higher!!";
+                }
+                noOfGuesses += 1;
+                countTv.setText(String.valueOf(noOfGuesses));
             }
-            noOfGuesses+=1;
-            countTv.setText(String.valueOf(noOfGuesses));
         }
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
     public int getRandomNumber(int max){
         Random r = new Random();
         return r.nextInt(max)+1;
