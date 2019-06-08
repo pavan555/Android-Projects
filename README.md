@@ -16,3 +16,5 @@ Some Cool Projects done in Android
 ### 5.Tic Tac Toe
 
    > it is general tic tac toe but with 2 players 
+### 6.Video Demo
+   >playing some video in application
