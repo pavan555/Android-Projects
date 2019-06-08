@@ -13,3 +13,6 @@ Some Cool Projects done in Android
 ### 4.Animations
     
    > just animations between 2 images 
+### 5.Tic Tac Toe
+
+   > it is general tic tac toe but with 2 players 
