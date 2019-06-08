@@ -10,3 +10,6 @@ Some Cool Projects done in Android
 ### 3.Number Shapes
 
    > it will check whether the entered number is triangular or squared number
+### 4.Animations
+    
+   > just animations between 2 images 
