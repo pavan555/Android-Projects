@@ -1,6 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+        }
+        release {
+            storeFile file('release.keystore')
+            storePassword 'android'
+            keyAlias = 'my-key'
+            keyPassword 'android'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.audiodemo"
@@ -14,6 +25,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            debuggable = true
+            jniDebuggable = true
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            jniDebuggable = true
         }
     }
 }

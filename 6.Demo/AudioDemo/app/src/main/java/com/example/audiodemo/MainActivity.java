@@ -1,5 +1,6 @@
 package com.example.audiodemo;
 
+import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -9,6 +10,9 @@ import android.widget.SeekBar;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+//keytool -genkey -v -keystore release.keystore -alias my-key -keyalg RSA -keysize 2048 -validity 10000
+//for generating release keystore
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
@@ -86,5 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 musicSeekBar.setProgress(mediaPlayer.getCurrentPosition());
             }
         },0,200);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 }
