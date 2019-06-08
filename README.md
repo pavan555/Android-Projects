@@ -18,3 +18,5 @@ Some Cool Projects done in Android
    > it is general tic tac toe but with 2 players 
 ### 6.Demo
    >playing some video and audio in applications
+### 7.Basic Phrases
+   >it will tell common phrases in english in French Language
