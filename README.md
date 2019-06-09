@@ -22,3 +22,5 @@ Some Cool Projects done in Android
    >it will tell common phrases in english in French Language
 ### 8.TimesTable
    > it will calculate the timestables
+### 9.Egg Timer
+   >works like stop watch
