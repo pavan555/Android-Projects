@@ -20,3 +20,5 @@ Some Cool Projects done in Android
    >playing some video and audio in applications
 ### 7.Basic Phrases
    >it will tell common phrases in english in French Language
+### 8.TimesTable
+   > it will calculate the timestables
