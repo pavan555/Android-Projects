@@ -24,3 +24,5 @@ Some Cool Projects done in Android
    > it will calculate the timestables
 ### 9.Egg Timer
    >works like stop watch
+### 10.Brain Trainer
+   > it will challenge you to solve basic math problems in 30secs
