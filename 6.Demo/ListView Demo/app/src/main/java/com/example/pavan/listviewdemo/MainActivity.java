@@ -1,8 +1,8 @@
 package com.example.pavan.listviewdemo;
 
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = (ListView) findViewById(R.id.myListView);
+        ListView listView = findViewById(R.id.myListView);
 
         final List<String> names = new ArrayList<String>();
         names.add("Pavan");
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         names.add("Sandeep");
         names.add("kumar");
 
+        //adapter will connect our list of names to the ListView
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, names);
 
         listView.setAdapter(arrayAdapter);
