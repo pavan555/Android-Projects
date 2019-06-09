@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Brain Trainer</string>
+    <string name="buttonText">Go!!</string>
+    <string name="question">Question :</string>
+    <string name="option1">1</string>
+    <string name="option2">2</string>
+    <string name="option3">3</string>
+    <string name="option0">0</string>
+    <string name="tryAgain">Want to play again ??</string>
+    <string name="buttonPlay">Play Again!!</string>
+    <string name="result">Correct :)</string>
+
+
+</resources>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#10D818"
+        android:onClick="start"
+        android:text="@string/buttonText"
+        android:textSize="36sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/countdownTimer"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:background="#DDF124"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="37sp"
+            app:fontFamily="sans-serif-smallcaps"
+            app:layout_constraintEnd_toStartOf="@+id/answersCount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/countdownTimer">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/question"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif-smallcaps" />
+
+            <TextView
+                android:id="@+id/questionTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="7dp"
+                android:paddingTop="5dp"
+                android:text="4 + 5 ?"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="273dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:columnCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:rowCount="2">
+
+            <Button
+                android:id="@+id/option0"
+                android:background="#03A9F4"
+                android:gravity="fill"
+                android:onClick="isItCorrect"
+                android:tag="@string/option0"
+                android:text="54"
+                android:textAlignment="center"
+                android:textSize="80sp"
+                android:typeface="monospace"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill"
+                app:layout_rowWeight="1" />
+
+            <Button
+                android:id="@+id/option1"
+                android:background="#E91E63"
+                android:gravity="fill"
+                android:onClick="isItCorrect"
+                android:tag="@string/option1"
+                android:text="12"
+                android:textAlignment="center"
+                android:textSize="80sp"
+                android:typeface="monospace"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <Button
+                android:id="@+id/option2"
+                android:background="#FFEB3B"
+                android:gravity="fill"
+                android:onClick="isItCorrect"
+                android:tag="@string/option2"
+                android:text="42"
+                android:textAlignment="center"
+                android:textSize="80sp"
+                android:typeface="monospace"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <Button
+                android:id="@+id/option3"
+                android:background="#4CAF50"
+                android:gravity="fill"
+                android:onClick="isItCorrect"
+                android:tag="@string/option3"
+                android:text="32"
+                android:textAlignment="center"
+                android:textSize="80sp"
+                android:typeface="monospace"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+        </android.support.v7.widget.GridLayout>
+
+        <TextView
+            android:id="@+id/answersCount"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFEB3B"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="36sp"
+            app:fontFamily="sans-serif-condensed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/countdownTimer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:onClick="startGame"
+            android:text="@string/buttonPlay"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultTv" />
+
+        <TextView
+            android:id="@+id/resultTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textSize="24sp"
+            app:fontFamily="casual"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
