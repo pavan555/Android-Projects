@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="content">What\'s The Weather?</string>
+    <string name="city">Enter name of a city..</string>
+    <string name="hint">e.g London,Tokyo</string>
+    <string name="button">Submit</string>
+</resources>
