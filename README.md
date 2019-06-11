@@ -26,3 +26,5 @@ Some Cool Projects done in Android
    >works like stop watch
 ### 10.Brain Trainer
    > it will challenge you to solve basic math problems in 30secs
+### 11.Guess the Celebrity
+   >it is like a quiz you have to guess the name of celebrity
