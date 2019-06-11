@@ -4,10 +4,12 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pavan.guessthecelebrity.utils.NetworkUtils;
@@ -34,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
     Pattern namePattern = Pattern.compile(" alt=\"(.*?)\"");
 
     ImageView imageView;
-    Button option0,option1,option2,option3;
+    Button option0,option1,option2,option3,tryAgain;
+    TextView textView;
+    ConstraintLayout constraintLayout;
 
 
 
@@ -68,36 +72,77 @@ public class MainActivity extends AppCompatActivity {
         option1 = findViewById(R.id.option1);
         option2 = findViewById(R.id.option2);
         option3 = findViewById(R.id.option3);
-
+        textView = findViewById(R.id.textView);
+        constraintLayout = findViewById(R.id.content);
+        tryAgain = findViewById(R.id.tryAgain);
 
         HtmlPage s = new HtmlPage();
 
 
         try {
-            htmlPage = s.execute(CELEB_SEARCH_URL).get();
+             htmlPage = s.execute(CELEB_SEARCH_URL).get();
+             htmlPage = htmlPage.split("<div class=\"listedArticles\">")[0];
+             if(htmlPage != null || !htmlPage.equals("")){
+                Matcher m = Imagepattern.matcher(htmlPage);
+                while (m.find()){
+                    celebImageUrls.add(m.group(1));
+                }
+                m = namePattern.matcher(htmlPage);
+                while (m.find()){
+                    celebNames.add(m.group(1));
+                }
+                if(celebNames.size() != 0 && celebImageUrls.size()!=0) {
+                    generateCeleb();
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-        htmlPage = htmlPage.split("<div class=\"listedArticles\">")[0];
-
-        Matcher m = Imagepattern.matcher(htmlPage);
-        while (m.find()){
-            celebImageUrls.add(m.group(1));
-        }
-        m = namePattern.matcher(htmlPage);
-        while (m.find()){
-            celebNames.add(m.group(1));
-        }
-
-
-        generateCeleb();
     }
 
 
-    public void generateCeleb(){
 
+    public void showData(){
+        textView.setVisibility(View.INVISIBLE);
+        tryAgain.setVisibility(View.INVISIBLE);
+        constraintLayout.setVisibility(View.VISIBLE);
+
+    }
+
+    public void showError(){
+        textView.setVisibility(View.VISIBLE);
+        tryAgain.setVisibility(View.VISIBLE);
+        constraintLayout.setVisibility(View.INVISIBLE);
+
+    }
+
+    public void TryAgain(View view){
+        if(htmlPage == null || htmlPage.equals("")){
+            HtmlPage s = new HtmlPage();
+            try {
+                htmlPage = s.execute(CELEB_SEARCH_URL).get();
+                htmlPage = htmlPage.split("<div class=\"listedArticles\">")[0];
+                Matcher m = Imagepattern.matcher(htmlPage);
+                while (m.find()){
+                    celebImageUrls.add(m.group(1));
+                }
+                m = namePattern.matcher(htmlPage);
+                while (m.find()){
+                    celebNames.add(m.group(1));
+                }
+                if(celebNames.size() != 0 && celebImageUrls.size()!=0) {
+                    generateCeleb();
+                    }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            generateCeleb();
+        }
+    }
+
+    public void generateCeleb(){
 
         choosenCeleb = random.nextInt(celebNames.size());
         choosenCelebLocation =random.nextInt(4);
@@ -146,7 +191,16 @@ public class MainActivity extends AppCompatActivity {
             return bitmap;
         }
 
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
 
+            if(bitmap != null){
+                showData();
+            }else{
+                showError();
+            }
+            super.onPostExecute(bitmap);
+        }
     }
 
 
@@ -165,6 +219,16 @@ public class MainActivity extends AppCompatActivity {
             return s;
         }
 
+        @Override
+        protected void onPostExecute(String s) {
+
+            if(s !=null ){
+                showData();
+            }else{
+                showError();
+            }
+            super.onPostExecute(s);
+        }
     }
 
 
