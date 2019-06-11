@@ -28,3 +28,6 @@ Some Cool Projects done in Android
    > it will challenge you to solve basic math problems in 30secs
 ### 11.Guess the Celebrity
    >it is like a quiz you have to guess the name of celebrity
+   
+### 12.What's The Weather App
+   > It will tell the weather when you enter the location
