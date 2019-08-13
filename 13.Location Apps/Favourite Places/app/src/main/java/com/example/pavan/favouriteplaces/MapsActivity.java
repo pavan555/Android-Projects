@@ -2,6 +2,7 @@ package com.example.pavan.favouriteplaces;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -27,9 +28,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import io.sentry.Sentry;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
@@ -146,11 +150,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             msg=sdf.format(new Date());
         }
 
+        SharedPreferences sharedPreferences=this.getSharedPreferences("com.example.pavan.favouriteplaces",MODE_PRIVATE);
 
         mMap.addMarker(new MarkerOptions().position(latLng).title(msg).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
         MainActivity.places.add(msg);
         MainActivity.locations.add(latLng);
         MainActivity.arrayAdapter.notifyDataSetChanged();
+
+
+        try {
+            ArrayList<String> latitudes=new ArrayList<>();
+            ArrayList<String> longitudes=new ArrayList<>();
+
+            for(LatLng ll:MainActivity.locations){
+                latitudes.add(Double.toString(ll.latitude));
+                longitudes.add(Double.toString(ll.longitude));
+            }
+
+            sharedPreferences.edit().putString("places",ObjectSerializer.serialize(MainActivity.places)).apply();
+            sharedPreferences.edit().putString("lats",ObjectSerializer.serialize(latitudes)).apply();
+            sharedPreferences.edit().putString("longs",ObjectSerializer.serialize(longitudes)).apply();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Sentry.capture(e);
+        }
 
         Toast.makeText(this,"Location Saved!!",Toast.LENGTH_SHORT).show();
 
