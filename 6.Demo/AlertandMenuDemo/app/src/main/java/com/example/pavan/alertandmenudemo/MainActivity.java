@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                 if(language.equals(lang[which])){
                                     new AlertDialog.Builder(MainActivity.this)
                                             .setIcon(android.R.drawable.ic_input_add)
+                                            .setTitle("Update")
                                             .setMessage("You Selected Same Language").show();
                                 }else{
                                     getSharedPreferences("com.example.pavan.alertandmenudemo",MODE_PRIVATE).edit().putString("language", lang[which]).apply();
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                                 if(language.equals(lang[which])){
                                     new AlertDialog.Builder(MainActivity.this)
                                             .setIcon(android.R.drawable.ic_input_add)
+                                            .setTitle("Update")
                                             .setMessage("You Selected Same Language").show();
                                 }else{
                                     getSharedPreferences("com.example.pavan.alertandmenudemo",MODE_PRIVATE).edit().putString("language", lang[which]).apply();
