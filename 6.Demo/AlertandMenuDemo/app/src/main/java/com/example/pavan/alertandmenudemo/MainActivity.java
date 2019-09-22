@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -73,6 +72,22 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
+    public  void setLanguage(int which){
+        final String language=getSharedPreferences("com.example.pavan.alertandmenudemo",MODE_PRIVATE).getString("language", "");
+        if(language.equals(lang[which])){
+            new AlertDialog.Builder(MainActivity.this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Update")
+                    .setMessage("You Selected Same Language").show();
+        }else{
+            getSharedPreferences("com.example.pavan.alertandmenudemo",MODE_PRIVATE).edit().putString("language", lang[which]).apply();
+            Toast.makeText(MainActivity.this,"Updated!!",Toast.LENGTH_SHORT).show();
+            textView.setText(lang[which]);
+
+        }
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
@@ -81,44 +96,23 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.update:
-                final String language=getSharedPreferences("com.example.pavan.alertandmenudemo",MODE_PRIVATE).getString("language", "");
                 new AlertDialog.Builder(this)
-                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setIcon(android.R.drawable.ic_btn_speak_now)
                         .setTitle("Update Language")
                         .setMessage("Choose the Language")
                         .setPositiveButton("English", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 which=Math.abs(which)-1;
-                                if(language.equals(lang[which])){
-                                    new AlertDialog.Builder(MainActivity.this)
-                                            .setIcon(android.R.drawable.ic_input_add)
-                                            .setTitle("Update")
-                                            .setMessage("You Selected Same Language").show();
-                                }else{
-                                    getSharedPreferences("com.example.pavan.alertandmenudemo",MODE_PRIVATE).edit().putString("language", lang[which]).apply();
-                                    Toast.makeText(MainActivity.this,"Updated!!",Toast.LENGTH_SHORT).show();
-                                    textView.setText(lang[which]);
+                                setLanguage(which);
 
-                                }
                             }
                         })
                         .setNegativeButton("Telugu", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 which=Math.abs(which)-1;
-                                Log.i("WHICH", String.valueOf(which));
-                                if(language.equals(lang[which])){
-                                    new AlertDialog.Builder(MainActivity.this)
-                                            .setIcon(android.R.drawable.ic_input_add)
-                                            .setTitle("Update")
-                                            .setMessage("You Selected Same Language").show();
-                                }else{
-                                    getSharedPreferences("com.example.pavan.alertandmenudemo",MODE_PRIVATE).edit().putString("language", lang[which]).apply();
-                                    Toast.makeText(MainActivity.this,"Updated!!",Toast.LENGTH_SHORT).show();
-                                    textView.setText(lang[which]);
-
-                                }
+                                setLanguage(which);
                             }
                         })
                         .show();
