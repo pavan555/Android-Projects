@@ -51,13 +51,39 @@ public class MainActivity extends AppCompatActivity {
 
         arrayAdapter = new ArrayAdapter(this, R.layout.simple_layout_mylist_items, stringArrayList);
         listView.setAdapter(arrayAdapter);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, addNotes.class);
                 intent.putExtra("notes", stringArrayList.get(position));
                 intent.putExtra("position", position);
                 startActivity(intent);
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                new AlertDialog.Builder(MainActivity.this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Are You Sure!?")
+                        .setMessage("Do You really want to delete ?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                stringArrayList.remove(position);
+                                arrayAdapter.notifyDataSetChanged();
+                                try {
+                                    getSharedPreferences("com.example.pavan.notes", MODE_PRIVATE).edit().putString("notess", ObjectSerializer.serialize(stringArrayList)).apply();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        })
+                        .setNegativeButton("No",null)
+                        .show();
                 return true;
             }
         });
@@ -71,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void onDestroying() {
+        Log.i("String array",String.format("%s",stringArrayList));
 
         new AlertDialog.Builder(this)
                 .setTitle("Do you really want to Exit!?")
@@ -78,20 +105,18 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
+                            //or by using HashSet
+                            //HashSet<String> set =new HashSet<>(stringArrayList);
+                            //getSharedPreferences("com.example.pavan.notes", MODE_PRIVATE).edit().putStringSet("notess",set).apply()
                             getSharedPreferences("com.example.pavan.notes", MODE_PRIVATE).edit().putString("notess", ObjectSerializer.serialize(stringArrayList)).apply();
-                            //Log.i("STRING ARRAY",String.format("%s",stringArrayList));
+                            Log.i("STRING ARRAY",String.format("%s",stringArrayList));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         System.exit(0);
                     }
                 })
-                .setNegativeButton("Noo :)", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
+                .setNegativeButton("Noo ;)", null)
                 .setCancelable(false)
                 .setIcon(android.R.drawable.ic_notification_clear_all)
                 .show();

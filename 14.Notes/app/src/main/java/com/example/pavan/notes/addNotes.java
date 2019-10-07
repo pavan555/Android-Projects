@@ -27,7 +27,7 @@ public class addNotes extends AppCompatActivity {
         setContentView(R.layout.activity_notes);
         editText = findViewById(R.id.editText);
         String notes = getIntent().getStringExtra("notes");
-        position = getIntent().getIntExtra("position", 99999);
+        position = getIntent().getIntExtra("position", -1);
 
         editText.setText(notes);
 
@@ -39,7 +39,7 @@ public class addNotes extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (MainActivity.stringArrayList.size() > 0 && position != 99999) {
+                if (MainActivity.stringArrayList.size() > 0 && position != -1) {
                     MainActivity.stringArrayList.set(position, String.valueOf(s));
                 } else {
                     MainActivity.stringArrayList.add(String.valueOf(s));
@@ -60,7 +60,7 @@ public class addNotes extends AppCompatActivity {
     protected void onDestroy() {
 
 
-        if (position != 99999 && MainActivity.stringArrayList.get(position).isEmpty()) {
+        if (position != -1 && MainActivity.stringArrayList.get(position).isEmpty()) {
 //            Log.i("POs",position.toString());
             MainActivity.stringArrayList.remove(MainActivity.stringArrayList.get(position));
             MainActivity.arrayAdapter.notifyDataSetChanged();
