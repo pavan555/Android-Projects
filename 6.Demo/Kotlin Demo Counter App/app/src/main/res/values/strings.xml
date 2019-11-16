@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Counter</string>
+    <string name="plus">+ 1</string>
+    <string name="decrease">- 1</string>
+    <string name="resetCount">Reset</string>
+</resources>
