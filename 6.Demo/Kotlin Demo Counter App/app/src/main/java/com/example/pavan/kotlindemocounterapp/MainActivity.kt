@@ -10,6 +10,7 @@ import android.widget.TextView
 class MainActivity : AppCompatActivity() {
 
     lateinit var textView: TextView
+    var count: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,12 +20,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun increase(v: View) {
-        textView.text = ((textView.text).toString().toInt() + 1).toString()
+        count += 1
+        textView.text = count.toString()
     }
 
     fun decrease(v: View) {
-        if (textView.text.toString().toInt() > 0) textView.text = ((textView.text).toString().toInt() - 1).toString()
-        else textView.text = "0"
+        if (count > 0) count -= 1 else count = 0
+        textView.text = count.toString()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -34,7 +36,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.reset) {
-            textView.text = "0"
+            count = 0
+            textView.text = count.toString()
             return true
         }
         return super.onOptionsItemSelected(item)
