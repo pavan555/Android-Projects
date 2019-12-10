@@ -74,5 +74,5 @@ Some Cool Projects done in Android
 
 
 
-__*Designed by /play tada [pavan555](https://github.com/pavan555) :metal: :+1: 
+__*Designed by [pavan555](https://github.com/pavan555) :metal: :+1: 
 :octocat: *__
