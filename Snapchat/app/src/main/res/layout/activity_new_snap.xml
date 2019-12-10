@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/newSnapConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewSnapActivity">
+
+
+    <include
+            android:id="@+id/my_tool_bar"
+            layout="@layout/action_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+            android:id="@+id/ChooseImageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_tool_bar"
+            app:srcCompat="@drawable/snapchat" />
+
+    <Button
+            android:id="@+id/chooseImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_rounded_signup"
+            android:fontFamily="sans-serif-smallcaps"
+            android:onClick="chooseImageClick"
+            android:text="@string/newImage"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ChooseImageView" />
+
+    <EditText
+            android:id="@+id/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Message"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chooseImageButton" />
+
+    <Button
+            android:id="@+id/craeteSnapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/create_snap_button"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:onClick="newSnap"
+            android:text="@string/createSnap"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/cancel_snap"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messageText" />
+
+    <Button
+            android:id="@+id/cancel_snap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/cancel_snap_button"
+            android:fontFamily="sans-serif-smallcaps"
+            android:onClick="cancel"
+            android:text="@android:string/cancel"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/craeteSnapButton"
+            app:layout_constraintTop_toBottomOf="@+id/messageText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

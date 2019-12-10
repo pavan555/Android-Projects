@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+        android:title="@string/logOut"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+    />
+    <item android:icon="@drawable/ic_fiber_new_black_24dp"
+        app:showAsAction="ifRoom"
+            android:orderInCategory="2"
+        android:id="@+id/newSnap"
+        android:title="@string/newsnapString"
+        />
+</menu>
