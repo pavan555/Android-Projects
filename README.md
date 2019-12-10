@@ -74,5 +74,5 @@ Some Cool Projects done in Android
 
 
 
-__ Designed by _[pavan555](https://github.com/pavan555)_ :metal: :+1: 
-:octocat: __
+**Designed by _[pavan555](https://github.com/pavan555)_ :metal: :+1: 
+:octocat:**
