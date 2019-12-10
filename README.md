@@ -53,12 +53,14 @@ Some Cool Projects done in Android
    >
    > works like Instagram and Parse is used.
 
+#
+
 ## Super Mario Clone
    >
    > It works similar like the game super mario 
    >
    >
-   > This game is designed using (GDX)[https://libgdx.badlogicgames.com]
+   > This game is designed using [GDX](https://libgdx.badlogicgames.com)
 # Snapchat
    > 
    > Works similar to the snapchat
