@@ -40,6 +40,8 @@ Some Cool Projects done in Android
 ### 13.Location Apps
    > 
    > Hiker's Watch App to tell your location
+   >
+   >
    > Favourite Places App locations will be placed on Google Maps,Select your favourite location on Map and it will be saved on your Device
 ### 14.Notes
    > 
@@ -54,12 +56,18 @@ Some Cool Projects done in Android
 ## Super Mario Clone
    >
    > It works similar like the game super mario 
+   >
+   >
    > This game is designed using (GDX)[https://libgdx.badlogicgames.com]
 # Snapchat
    > 
    > Works similar to the snapchat
+   >
+   >
    > it has all features of snapchat like Uploading Snaps and sending it to particular person,
    whenever the person sees the snap,it will be automatically deleted
+   >
+   >
    > Designed using Google Firebase
 
 
