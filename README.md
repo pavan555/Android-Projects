@@ -38,16 +38,29 @@ Some Cool Projects done in Android
    >
    > It will tell the weather when you enter the location
 ### 13.Location Apps
-   >
+   > 
    > Hiker's Watch App to tell your location
    > Favourite Places App locations will be placed on Google Maps,Select your favourite location on Map and it will be saved on your Device
 ### 14.Notes
-   >
+   > 
    > works like notepad
 ### 15.News
-   >
+   > 
    > Fetches the latest News from [Newsapi](https://newsapi.org)
 ### 16.Instagram Clone
    >
    > works like Instagram and Parse is used.
+
+## Super Mario Clone
+   >
+   > It works similar like the game super mario 
+   > This game is designed using (GDX)[https://libgdx.badlogicgames.com]
+# Snapchat
+   > 
+   > Works similar to the snapchat
+   > it has all features of snapchat like Uploading Snaps and sending it to particular person,
+   whenever the person sees the snap,it will be automatically deleted
+   > Designed using Google Firebase
+
+
 
