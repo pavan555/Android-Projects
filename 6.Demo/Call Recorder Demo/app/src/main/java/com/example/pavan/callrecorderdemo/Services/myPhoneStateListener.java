@@ -2,6 +2,7 @@ package com.example.pavan.callrecorderdemo.Services;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -40,7 +41,6 @@ class myPhoneStateListener extends PhoneStateListener {
                     incoming = true;
                     intent = new Intent(context, CallService.class);
                     intent.putExtra("phoneNumber", phoneNumber);
-                    Log.i("Incoming", phoneNumber);
                     context.startService(intent);
                     break;
 
@@ -52,15 +52,19 @@ class myPhoneStateListener extends PhoneStateListener {
 
                         intent = new Intent(context, CallService.class);
                         intent.putExtra("phoneNumber", phoneNumber);
-                        context.startService(intent);
 
-                        Log.i("Number Outgoing", " " + phoneNumber + "yeah babe");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            context.startForegroundService(intent);
+                        }else{
+                            context.startService(intent);
+                        }
+//                        Log.i("Number Outgoing", " " + phoneNumber + "yeah");
 
 
                     } else {
 
                         incoming = true;
-                        Log.i("Number INC", phoneNumber);
+//                        Log.i("Number INC", phoneNumber);
 
 
                     }
@@ -82,7 +86,6 @@ class myPhoneStateListener extends PhoneStateListener {
                         Log.i("outgoing HANGED", phoneNumber + " hanged");
 
                     }
-
                     intent = new Intent(context, CallService.class);
                     context.stopService(intent);
                     break;
